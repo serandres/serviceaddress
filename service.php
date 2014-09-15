@@ -3,11 +3,16 @@
 	//http://maps.googleapis.com/maps/api/geocode/json?latlng=4.73886,-75.90998&sensor=true_or_false
 	//echo $_GET['lon'];
 	//echo $_GET['lat'];
-	$lonlat=$_GET['lat'].','.$_GET['lon'];
-	echo $lonlat;
+	if(!$_GET['lon'] && !$_GET['lat']){
+		echo 'No hay datos para procesar!';
+	}else{
+		$lonlat=$_GET['lat'].','.$_GET['lon'];
+		echo $lonlat;
 
 ?>
-	<script type="text/javascript">
-		var url='http://maps.googleapis.com/maps/api/geocode/json?latlng=$lonlat&sensor=true_or_false';
-		console.log(url);
-	</script>
+		<script type="text/javascript">
+			var url='http://maps.googleapis.com/maps/api/geocode/json?latlng=<?php echo $lonlat; ?>&sensor=true_or_false';
+		</script>
+<?php
+}
+?>
